@@ -41,6 +41,7 @@ public class PlayerScript : MonoBehaviour
         //During setup we call UpdateScore to make sure our score text looks correct
         UpdateScore(0);
         UpdateHealth(0);
+        Debug.Log("Hello World");
     }
 
     //Update is a lot like Start, but it automatically gets triggered once per frame
