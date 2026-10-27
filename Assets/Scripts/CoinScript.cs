@@ -11,6 +11,21 @@ public class CoinScript : MonoBehaviour
     {
         //This destroys the coin
         //Destroy(gameObject);
-        transform.position = new Vector3(Random.Range(-8f, 8f), Random.Range(-4f, 4f), 0);
+        float x = Random.Range(-8f, 8f);
+        float y = Random.Range(-4f, 4f);
+
+        if (x >= 3f && x <= 5f && y >= -3f && y <= 3f)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                x = Random.Range(-8f, 3f);
+            }
+            else
+            {
+                x = Random.Range(5f, 8f);
+            }
+        }
+        transform.position = new Vector3(x, y, 0f);
+        Debug.Log("Coin bumped! New position: " + transform.position);
     }
 }

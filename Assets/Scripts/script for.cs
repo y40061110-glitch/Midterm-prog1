@@ -13,6 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         myRB = GetComponent<Rigidbody2D>();
         isGrounded = false;
+        Debug.Log("Hi Miku");
     }
 
 private void Update()
@@ -89,5 +90,4 @@ void OnCollisionExit2D(Collision2D collision)
         }
     }
         
-
 
