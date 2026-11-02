@@ -26,7 +26,7 @@ public class hazards : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        stageText.text = "Stage 1";
+        stageText.text = "Stage One";
 
         hazard1.gameObject.SetActive(true);
         hazard2.gameObject.SetActive(false);
@@ -40,10 +40,7 @@ public class hazards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
-        return;
         int score = player.Score;
-
         if (score >= 2 && !hazard2.gameObject.activeSelf)
         { float distance = Vector2.Distance(player.transform.position, hazard2.transform.position);
             if (distance > safeDistance)
@@ -80,7 +77,19 @@ public class hazards : MonoBehaviour
         chooseNewDirection();
     }
 
-    void FixedUpdate()
+  
+    void chooseNewDirection()
+    {
+        direction1 = Random.insideUnitCircle.normalized;
+        direction2 = Random.insideUnitCircle.normalized;
+        direction3 = Random.insideUnitCircle.normalized;
+        direction4 = Random.insideUnitCircle.normalized;
+        direction5 = Random.insideUnitCircle.normalized;
+
+        directionTimer = changeDirectionTime;
+    }
+
+      void FixedUpdate()
     { 
         float moveSpeed = speed;
 
@@ -103,14 +112,4 @@ public class hazards : MonoBehaviour
 
 }
 
-    void chooseNewDirection()
-    {
-        direction1 = Random.insideUnitCircle.normalized;
-        direction2 = Random.insideUnitCircle.normalized;
-        direction3 = Random.insideUnitCircle.normalized;
-        direction4 = Random.insideUnitCircle.normalized;
-        direction5 = Random.insideUnitCircle.normalized;
-
-        directionTimer = changeDirectionTime;
-    }
 }

@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     public TextMeshPro HealthText;
     
     //This will control how fast the player moves
-    public float Speed = 5;
+    public float Speed = 5f;
     
     //This is how many points we currently have
     public int Score = 0;
@@ -34,6 +34,8 @@ public class PlayerScript : MonoBehaviour
 
     public float dashTimer = 0f;
 
+   public AudioSource collectSound;
+   public AudioSource damageSound;
     
     //Start automatically gets triggered once when the objects turns on/the game starts
     void Start()
@@ -152,6 +154,9 @@ public class PlayerScript : MonoBehaviour
             //take damage 
             Health--;
             UpdateHealth(0);
+
+        damageSound.PlayOneShot(damageSound.clip);
+    
         //check if health is 0 or less then we run the die function
           if(Health <= 0)
             {
@@ -169,8 +174,10 @@ public class PlayerScript : MonoBehaviour
             coin.GetBumped();
             //Make your score variable go up by one. . .
             Score++;
+           
             //And then update the game's score text
             UpdateScore(0);
+            collectSound.PlayOneShot(collectSound.clip);
         }
     }
 
@@ -179,7 +186,7 @@ public class PlayerScript : MonoBehaviour
     public void UpdateScore(int v)
     {
         Score += v;
-        ScoreText.text = "Score: " + Score;
+        ScoreText.text = "Score: " + Score + " /20";
     }
    //This function that updates the player's health on screen.
 

@@ -6,17 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
+    public PlayerScript player;
     //This script controls what happens on the Game Over screen
     //Currently, the only option is for the player to hit 'Space' and restart the game
     
     //Every frame, we check for player inputs
     void Update()
     {
-        //If the player hit space. . .
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (SceneManager.GetActiveScene().name == "Game Over")
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            //If the player hit space. . .
+            {
+                //Then load the 'Example 3' scene
+                SceneManager.LoadScene("Example 3");
+            }
+                return;
+            
+        }
+       
+
+     
+        if (player.Score >= 20)
         {
             //Then load the 'Example 3' scene
-            SceneManager.LoadScene("Example 3");
+            SceneManager.LoadScene("Example 2");
         }
     }
 }
