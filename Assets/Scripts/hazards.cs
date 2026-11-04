@@ -11,7 +11,7 @@ public class hazards : MonoBehaviour
     public Rigidbody2D hazard5;
     public TMP_Text stageText;
 
-    public float speed = 1.5f;
+    public float speed = 2.3f;
 
     public float changeDirectionTime = 1.5f;
     public float safeDistance = 2f;
