@@ -4,11 +4,35 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
+
+    public SpriteRenderer mySprite;
+    public Color startCol;
     //The player calls this function on the coin whenever they bump into it
     //You can change its contents if you want something different to happen on collection
     //For example, what if the coin teleported to a new location instead of being destroyed?
+
+
+    public void Start()
+    {
+        mySprite = GetComponent<SpriteRenderer>();
+        startCol = mySprite.color;
+        Debug.Log("StartColor: " + startCol);   
+    }
+
+    public void Update()
+    {
+        //Debug.Log("CurrentColor: " + mySprite.color);
+
+        float sin = (Mathf.Sin(Time.time*2)+1)/2;
+        Debug.Log("sin: " + sin);
+
+        Vector4 lerp = Vector4.Lerp(startCol, Color.white, sin);
+        mySprite.color = lerp;
+        Debug.Log("lerp: " + lerp);
+    }
     public void GetBumped()
     {
+
         //This destroys the coin
         //Destroy(gameObject);
         float x = Random.Range(-8f, 8f);
